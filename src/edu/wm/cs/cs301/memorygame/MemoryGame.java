@@ -1,40 +1,49 @@
 package edu.wm.cs.cs301.memorygame;
 
 // import file reader/writer and input scanner
+import java.util.Scanner;
 
 public class MemoryGame {
 
-	private String leaderboard
+	private String leaderboard;
 
-	private String player_name
-	private String difficulty // easy, medium, hard
+	private String player_name;
+	private String difficulty; // easy, medium, hard
 
-	private GameBoard board;
+	//private GameBoard board;
 
 	
 	public MemoryGame() {
-		leaderboard = getLeaderBoard()
 		// print welcome message
+		System.out.println("Welcome to Jakes Memory Game Project!");
+		System.out.println("-------------------------------------");
+
+		// player name
+		Scanner stdin = new Scanner(System.in);
+		System.out.print("Please register your username:");
+		player_name = stdin.nextLine();
+		
+		//leaderboard = getLeaderBoard();
 		// print leaderboard message
-		// print leaderboard
+
 		// get difficulty, check that difficulty is valid
 		// create gameboard
 
 		int turn = 0; // turn number 
 		int matches = 0; // number of matches
 
-		int num_matches_to_win = (board.getWidth() * board.getHeight()) / 2; // win condition
+		//int num_matches_to_win = (board.getWidth() * board.getHeight()) / 2; 
 
-		while matches < num_matches_to_win {
-			turn = nextTurn(); // returns 0 for quit, next turn, or the final score if win condition
-			// if turn = 0, the quit condition, break out of loop
-		}
+		//while matches < num_matches_to_win {
+		//	turn = nextTurn(); // returns 0 for quit, next turn, or the final score if win condition
+		// if turn = 0, the quit condition, break out of loop
+		//}
 		// check game was not quit
 		int score = turn--;//decrement turn to get score
-		updateLeaderboard(player_name, difficulty, score)
+		//updateLeaderboard(player_name, difficulty, score)
 		// print win message
 	}
-	
+
 	private String getLeaderBoard() {
 		//check file
 		//if no file, return a response string
