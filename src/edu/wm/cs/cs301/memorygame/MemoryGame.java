@@ -23,16 +23,16 @@ public class MemoryGame {
 		System.out.print("Please register your username: ");
 		player_name = stdin.nextLine().trim();
 		System.out.print("\n");
+
 		// leaderboard = getLeaderBoard();
 		leaderboard = "difficulty | player_name | score  \ndifficulty | player_name | score \ndifficulty | player_name | score"; // faux leaderboard
 
-
+		// print leaderboard message
 		System.out.println("-------------------------------------");
 		System.out.println("\tCURRENT LEADERBOARD:");
 		System.out.println(leaderboard);
 		System.out.println("-------------------------------------");
 		System.out.print("\n");
-		// print leaderboard message
 
 		// get difficulty, check that difficulty is valid
 		System.out.print("choose a difficulty level (easy, medium, hard): ");
@@ -45,11 +45,17 @@ public class MemoryGame {
 		}
 		
 		// create gameboard
+		// board = new GameBoard(difficulty);
 
 		int turn = 0; // turn number 
 		int matches = 0; // number of matches
 
-		//int num_matches_to_win = (board.getWidth() * board.getHeight()) / 2; 
+		int num_matches_to_win;
+		switch (difficulty) {
+			case "easy" -> num_matches_to_win = 6;
+			case "medium" -> num_matches_to_win = 14;
+			case "hard" -> num_matches_to_win = 28;
+		}
 
 		//while matches < num_matches_to_win {
 		//	turn = nextTurn(); // returns 0 for quit, next turn, or the final score if win condition
