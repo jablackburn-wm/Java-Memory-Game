@@ -8,6 +8,7 @@ public class MemoryGame {
 	private String leaderboard;
 
 	private String player_name;
+	private Alphabet alphabet; // greek, cyrillic
 	private String difficulty; // easy, medium, hard
 
 	//private GameBoard board;
@@ -34,6 +35,23 @@ public class MemoryGame {
 		System.out.println("-------------------------------------");
 		System.out.print("\n");
 
+
+		// get alphabet (greek, cyrillic)
+		String alphabet_selection;
+		System.out.print("choose a symbol set (greek, cyrillic): ");
+		alphabet_selection = stdin.nextLine().trim();
+		while ( !alphabet_selection.equals("greek") && !alphabet_selection.equals("cyrillic") ){
+			System.out.println("!!!invalid symbol set!!! - please enter 'greek', or 'cyrillic' exactly.");
+			System.out.print("\n");
+			System.out.print("choose a symbol set (greek, cyrillic): ");
+			alphabet_selection = stdin.nextLine().trim();
+			System.out.print("\n");
+		}
+		switch (alphabet_selection) {
+			case "greek" -> System.out.println("greek"); //alphabet = new GreekAlphabet();
+			case "cyrillic" -> System.out.println("cyrillic"); //alphabet = new CyrillicAlphabet();
+		}
+
 		// get difficulty, check that difficulty is valid
 		System.out.print("choose a difficulty level (easy, medium, hard): ");
 		difficulty = stdin.nextLine().trim();
@@ -42,6 +60,7 @@ public class MemoryGame {
 			System.out.print("\n");
 			System.out.print("choose a difficulty level (easy, medium, hard): ");
 			difficulty = stdin.nextLine().trim();
+			System.out.print("\n");
 		}
 		
 		// create gameboard
