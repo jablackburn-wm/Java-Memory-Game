@@ -20,13 +20,20 @@ public class MemoryGame {
 
 		// player name
 		Scanner stdin = new Scanner(System.in);
-		System.out.print("Please register your username:");
-		player_name = stdin.nextLine();
-		
-		//leaderboard = getLeaderBoard();
+		System.out.print("Please register your username: ");
+		player_name = stdin.nextLine().trim();
+		// leaderboard = getLeaderBoard();
+		leaderboard = "difficulty | player_name | score  \ndifficulty | player_name | score \ndifficulty | player_name | score"; // faux leaderboard
+
+
+		System.out.println("-------------------------------------");
+		System.out.println("\tCURRENT LEADERBOARD:");
+		System.out.println(leaderboard);
+		System.out.println("-------------------------------------");
 		// print leaderboard message
 
 		// get difficulty, check that difficulty is valid
+		
 		// create gameboard
 
 		int turn = 0; // turn number 
@@ -51,6 +58,9 @@ public class MemoryGame {
 	}
 
 	private void updateLeaderBoard(String player_name, String difficulty, int score) {
+	
+		//String[] leaderboard_data = leaderboard.split(" | ", 0);
+		
 		//check leaderboard data exists, if not create file and add score 
 		//if data exists
 		//check for corresponding difficulty
