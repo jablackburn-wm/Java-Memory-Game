@@ -45,17 +45,31 @@ public class MemoryGame {
 		}
 		
 		// create gameboard
-		// board = new GameBoard(difficulty);
+		int rows;
+		int columns;
+		int num_matches_to_win;
+		switch (difficulty) {
+			case "easy" -> {
+					rows = 4;
+					columns = 3;
+					num_matches_to_win = 6;
+				}
+			case "medium" -> {
+					rows = 4;
+					columns = 7;
+					num_matches_to_win = 14;
+				}
+			case "hard" -> {
+					rows = 7;
+					columns = 8;
+					num_matches_to_win = 28;
+				}
+		}
+		// board = new GameBoard(rows, columns, alphabet);
 
 		int turn = 0; // turn number 
 		int matches = 0; // number of matches
 
-		int num_matches_to_win;
-		switch (difficulty) {
-			case "easy" -> num_matches_to_win = 6;
-			case "medium" -> num_matches_to_win = 14;
-			case "hard" -> num_matches_to_win = 28;
-		}
 
 		//while matches < num_matches_to_win {
 		//	turn = nextTurn(); // returns 0 for quit, next turn, or the final score if win condition
