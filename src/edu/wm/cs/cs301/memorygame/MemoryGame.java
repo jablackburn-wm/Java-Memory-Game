@@ -22,6 +22,7 @@ public class MemoryGame {
 		Scanner stdin = new Scanner(System.in);
 		System.out.print("Please register your username: ");
 		player_name = stdin.nextLine().trim();
+		System.out.print("\n");
 		// leaderboard = getLeaderBoard();
 		leaderboard = "difficulty | player_name | score  \ndifficulty | player_name | score \ndifficulty | player_name | score"; // faux leaderboard
 
@@ -30,9 +31,18 @@ public class MemoryGame {
 		System.out.println("\tCURRENT LEADERBOARD:");
 		System.out.println(leaderboard);
 		System.out.println("-------------------------------------");
+		System.out.print("\n");
 		// print leaderboard message
 
 		// get difficulty, check that difficulty is valid
+		System.out.print("choose a difficulty level (easy, medium, hard): ");
+		difficulty = stdin.nextLine().trim();
+		while ( !difficulty.equals("easy") && !difficulty.equals("medium") && !difficulty.equals("hard") ) {
+			System.out.println("!!!invalid difficulty!!! - please enter 'easy', 'medium', or 'hard'.");
+			System.out.print("\n");
+			System.out.print("choose a difficulty level (easy, medium, hard): ");
+			difficulty = stdin.nextLine().trim();
+		}
 		
 		// create gameboard
 
