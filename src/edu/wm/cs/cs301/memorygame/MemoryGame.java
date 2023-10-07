@@ -48,8 +48,8 @@ public class MemoryGame {
 			System.out.print("\n");
 		}
 		switch (alphabet_selection) {
-			case "greek" -> System.out.println("greek"); //alphabet = new GreekAlphabet();
-			case "cyrillic" -> System.out.println("cyrillic"); //alphabet = new CyrillicAlphabet();
+			case "greek" -> alphabet = new GreekAlphabet();
+			case "cyrillic" -> alphabet = new CyrillicAlphabet();
 		}
 
 		// get difficulty, check that difficulty is valid
