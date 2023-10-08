@@ -1,6 +1,8 @@
 package edu.wm.cs.cs301.memorygame;
 
 import java.util.Collections;
+import java.util.Arrays;
+import java.util.List;
 
 public class GameBoard {
 	private final GamePiece[][] board;
@@ -13,7 +15,7 @@ public class GameBoard {
 
 		int num_chars = (rows * cols) / 2;
 
-		char[] chars = copyOfRange(a.toCharArray(), 0, num_chars);
+		char[] chars = Arrays.copyOfRange(a.toCharArray(), 0, num_chars);
 		char[] randomized_chars = randomizeChars(chars);
 
 		board = populateBoard(rows, columns, randomized_chars);
@@ -49,7 +51,9 @@ public class GameBoard {
 			doubled_chars[i + 1] = c;
 			i = i + 2;
 		}
+		List<char> char_list = Arrays.asList(doubled_chars);
 		Collections.shuffle(doubled_chars);
+		char_list.toArray(doubled_chars);
 		return doubled_chars;
 	}
 }
