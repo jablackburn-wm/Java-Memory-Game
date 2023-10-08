@@ -16,7 +16,7 @@ public class GameBoard {
 		int num_chars = (rows * cols) / 2;
 
 		char[] chars = Arrays.copyOfRange(a.toCharArray(), 0, num_chars);
-		char[] randomized_chars = randomizeChars(chars);
+		GamePiece[] randomized_chars = randomizeChars(chars);
 
 		board = populateBoard(rows, cols, randomized_chars);
 	}
@@ -25,7 +25,7 @@ public class GameBoard {
 		
 	}
 	
-	private GamePiece[][] populateBoard(int rows, int columns, char[] randomized_chars) {
+	private GamePiece[][] populateBoard(int rows, int columns, GamePiece[] randomized_chars) {
 		GamePiece[][] board = new GamePiece[rows][];
 		int random_char_index = 0;
 		int row_index = 0;
@@ -33,27 +33,28 @@ public class GameBoard {
 		while (row_index < rows) {
 			board[row_index] = new GamePiece[columns];
 			while (column_index < columns) {
-				board[row_index][column_index] = new CharacterGamePiece(randomized_chars[random_char_index]);
+				board[row_index][column_index] = randomized_chars[random_char_index];
 				random_char_index++;
 				column_index++;
 			}
+			row_index++;
 			column_index = 0;
 		}
 		return board;
 		
 	}
 
-  private char[] randomizeChars(char[] chars) {
+  private GamePiece[] randomizeChars(char[] chars) {
 		int chars_len = chars.length;
-		char[] doubled_chars = new char[chars_len * 2];
+		GamePiece[] doubled_chars = new GamePiece[chars_len * 2];
 		int i = 0;
 		for (char c : chars) {
-			doubled_chars[i] = c;
-			doubled_chars[i + 1] = c;
+			doubled_chars[i] = new CharacterGamePiece(c);
+			doubled_chars[i + 1] = new CharacterGamePiece(c);
 			i = i + 2;
 		}
-		List<char> char_list = Arrays.asList(doubled_chars);
-		Collections.shuffle(doubled_chars);
+		List<GamePiece> char_list = Arrays.asList(doubled_chars);
+		Collections.shuffle(char_list);
 		char_list.toArray(doubled_chars);
 		return doubled_chars;
 	}
