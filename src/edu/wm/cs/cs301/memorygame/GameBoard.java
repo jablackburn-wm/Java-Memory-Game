@@ -23,18 +23,20 @@ public class GameBoard {
 		
 	}
 	
-	private
-	
-	public GamePiece makeGuess(int row, int col) {
-		GamePiece guess = board[row][col];
-		if guess.isVisible() == true
-		guess.setVisible(true)
-	}
-
-	
-
-
 	private GamePiece[][] populateBoard(int rows, int columns, char[] randomized_chars) {
+		GamePiece[][] board = new GamePiece[rows][];
+		int random_char_index = 0;
+		int row_index = 0;
+		int column_index = 0;
+		while (row_index < rows) {
+			board[row_index] = new GamePiece[columns];
+			while (column_index < columns) {
+				board[row_index][column_index] = new GamePiece(randomized_chars[random_char_index]);
+				random_char_index++;
+				column_index++;
+			}
+			column_index = 0;
+		}
 		
 	}
 
