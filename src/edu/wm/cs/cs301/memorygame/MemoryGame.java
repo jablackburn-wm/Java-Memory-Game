@@ -11,7 +11,7 @@ public class MemoryGame {
 	private Alphabet alphabet; // greek, cyrillic
 	private String difficulty; // easy, medium, hard
 
-	//private GameBoard board;
+	private GameBoard board;
 
 	
 	public MemoryGame() {
@@ -45,8 +45,8 @@ public class MemoryGame {
 			System.out.print("\n");
 			System.out.print("choose a symbol set (greek, cyrillic): ");
 			alphabet_selection = stdin.nextLine().trim();
-			System.out.print("\n");
 		}
+		System.out.print("\n");
 		switch (alphabet_selection) {
 			case "greek" -> alphabet = new GreekAlphabet();
 			case "cyrillic" -> alphabet = new CyrillicAlphabet();
@@ -64,9 +64,9 @@ public class MemoryGame {
 		}
 		
 		// create gameboard
-		int rows;
-		int columns;
-		int num_matches_to_win;
+		int rows = 0;
+		int columns = 0;
+		int num_matches_to_win = 0;
 		switch (difficulty) {
 			case "easy" -> {
 					rows = 4;
@@ -84,7 +84,7 @@ public class MemoryGame {
 					num_matches_to_win = 28;
 				}
 		}
-		// board = new GameBoard(rows, columns, alphabet);
+		board = new GameBoard(rows, columns, alphabet);
 
 		int turn = 0; // turn number 
 		int matches = 0; // number of matches
