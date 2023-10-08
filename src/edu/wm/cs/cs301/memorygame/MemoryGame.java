@@ -90,11 +90,20 @@ public class MemoryGame {
 		int matches = 0; // number of matches
 
 
-		//while matches < num_matches_to_win {
-		//	turn = nextTurn(); // returns 0 for quit, next turn, or the final score if win condition
-		// if turn = 0, the quit condition, break out of loop
-		//}
+		while (matches < num_matches_to_win) {
+			turn = nextTurn(); // returns 0 for quit, or next turn number 
+
+			//if turn = 0, the quit condition, break out of loop
+		  if (turn == 0) { 
+				System.out.println("You are a failure!");
+				return;
+			}
+		}
+
 		// check game was not quit
+		if (turn == 0) {
+			
+		}
 		int score = turn--;//decrement turn to get score
 		//updateLeaderboard(player_name, difficulty, score)
 		// print win message

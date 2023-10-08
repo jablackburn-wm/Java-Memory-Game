@@ -28,6 +28,7 @@ public class GameBoard {
 			System.out.print(i + " | ");
 		}
 		System.out.print("\n");
+
 		//print delimiting lines
 		System.out.print("---");
 		for (int i = 1; i <= cols; i++) {
