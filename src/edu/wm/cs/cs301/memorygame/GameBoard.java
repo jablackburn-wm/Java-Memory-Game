@@ -18,7 +18,7 @@ public class GameBoard {
 		char[] chars = Arrays.copyOfRange(a.toCharArray(), 0, num_chars);
 		char[] randomized_chars = randomizeChars(chars);
 
-		board = populateBoard(rows, columns, randomized_chars);
+		board = populateBoard(rows, cols, randomized_chars);
 	}
 
 	public void drawBoard() {
@@ -33,7 +33,7 @@ public class GameBoard {
 		while (row_index < rows) {
 			board[row_index] = new GamePiece[columns];
 			while (column_index < columns) {
-				board[row_index][column_index] = new GamePiece(randomized_chars[random_char_index]);
+				board[row_index][column_index] = new CharacterGamePiece(randomized_chars[random_char_index]);
 				random_char_index++;
 				column_index++;
 			}
