@@ -22,6 +22,39 @@ public class GameBoard {
 	}
 
 	public void drawBoard() {
+		//print column list 
+		System.out.print("# | ");
+		for (int i = 1; i <= cols; i++) {
+			System.out.print(i + " | ");
+		}
+		System.out.print("\n");
+		//print delimiting lines
+		System.out.print("---");
+		for (int i = 1; i <= cols; i++) {
+			System.out.print("----");
+		}
+		System.out.print("\n");
+
+		//print row 
+		int row_number = 1;
+		for (GamePiece[] row : board) {
+			System.out.print(row_number + " | ");
+			for (GamePiece c : row) {
+				if (c.isVisible()) {
+					System.out.print(c.getSymbol() + " | ");
+					continue;
+				}
+				System.out.print("  | ");
+			}
+			System.out.print("\n");
+			//delimiting lines
+			System.out.print("---");
+			for (int i = 1; i <= cols; i++) {
+				System.out.print("----");
+			}
+		System.out.print("\n");
+			row_number++;
+		}
 		
 	}
 	
