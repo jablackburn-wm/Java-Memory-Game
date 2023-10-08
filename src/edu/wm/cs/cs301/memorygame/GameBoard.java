@@ -39,6 +39,7 @@ public class GameBoard {
 			}
 			column_index = 0;
 		}
+		return board;
 		
 	}
 
