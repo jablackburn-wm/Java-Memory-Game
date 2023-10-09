@@ -135,10 +135,12 @@ public class MemoryGame {
 		board.drawBoard();
 
 		// prompt for input, set guess1 - if quit return 0
+		int row_guess1 = 0;
+		int col_guess1 = 0;
 		boolean is_valid_guess = false;
 		while (!is_valid_guess) {
-			int row_guess1 = getRowGuess();
-			int col_guess1 = getColumnGuess();
+			row_guess1 = getRowGuess();
+			col_guess1 = getColumnGuess();
 			if (row_guess1 == 0 || col_guess1 == 0) { return 0; }
 			is_valid_guess = board.isValidGuess(row_guess1, col_guess1);
 		}
@@ -148,10 +150,12 @@ public class MemoryGame {
 		board.drawBoard();
 
 		// prompt for guess 2 - if quit return 0
+		int row_guess2 = 0;
+		int col_guess2 = 0;
 		is_valid_guess = false;
 		while (!is_valid_guess) {
-			int row_guess2 = getRowGuess();
-			int col_guess2 = getColumnGuess();
+		  row_guess2 = getRowGuess();
+			col_guess2 = getColumnGuess();
 			if (row_guess2 == 0 || col_guess2 == 0) { return 0; }
 			is_valid_guess = board.isValidGuess(row_guess2, col_guess2);
 		}
