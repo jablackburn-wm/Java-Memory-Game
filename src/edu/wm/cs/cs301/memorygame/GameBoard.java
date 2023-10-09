@@ -22,11 +22,11 @@ public class GameBoard {
 	}
 
 	public void makeGuess(int row, int col) {
-		
+		GamePiece guess = board[row - 1][col - 1];	
+		guess.setVisible(true);
 	}
 
 	public boolean isValidGuess(int row, int col) {
-	
 	}
 
 	public boolean checkisMatch(int row1, int col1, int row2, int col2) {
