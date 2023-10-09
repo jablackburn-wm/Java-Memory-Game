@@ -92,4 +92,13 @@ public class GameBoard {
 		char_list.toArray(doubled_chars);
 		return doubled_chars;
 	}
+		
+
+	public int getRows() {
+		return rows;
+	}
+
+	public int getColumns() {
+		return cols;
+	}
 }
