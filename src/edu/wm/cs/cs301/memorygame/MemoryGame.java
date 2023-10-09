@@ -181,19 +181,19 @@ public class MemoryGame {
 
 	private int getRowGuess() {
 		System.out.print("\n");
-		System.out.print("select the row of your guess (input 'quit' to exit): ")'
+		System.out.print("select the row of your guess (input 'quit' to exit): ");
 		
 		int row_limit = board.getRows();
 		int row = 0;
 		row = stdin.nextLine().trim();
-		if (row.equals("quit") { return 0 };
+		if (row.equals("quit")) { return 0; }
 		while (row < 1 && row > row_limit) {
 			System.out.print("\n");
 			System.out.println("Invalid row number, please select from 1 to " + row_limit);
 			System.out.print("\n");
-			System.out.print("select the row of your guess (input 'quit' to exit): ")'
+			System.out.print("select the row of your guess (input 'quit' to exit): ");
 			row = stdin.nextLine().trim();
-			if (row.equals("quit") { return 0 };
+			if (row.equals("quit")) { return 0; }
 		}
 		return row;
 	}
@@ -201,19 +201,19 @@ public class MemoryGame {
 
 	private int getColumnGuess() {
 		System.out.print("\n");
-		System.out.print("select the column of your guess (input 'quit' to exit): ")'
+		System.out.print("select the column of your guess (input 'quit' to exit): ");
 
 		int col_limit = board.getColumns();
 		int col = 0;
 		col = stdin.nextLine().trim();
-		if (col.equals("quit") { return 0 };
+		if (col.equals("quit")) { return 0; }
 		while (col < 1 && col > col_limit) {
 			System.out.print("\n");
 			System.out.println("Invalid column number, please select from 1 to " + col_limit);
 			System.out.print("\n");
-			System.out.print("select the column of your guess (input 'quit' to exit): ")'
+			System.out.print("select the column of your guess (input 'quit' to exit): ");
 			col = stdin.nextLine().trim();
-			if (col.equals("quit") { return 0 };
+			if (col.equals("quit")) { return 0; }
 		}
 		return col;
 	}
