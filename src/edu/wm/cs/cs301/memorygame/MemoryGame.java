@@ -161,7 +161,7 @@ public class MemoryGame {
 		board.drawBoard();
 
 		// check match
-		boolean is_match = board.checkIsMatch(row_guess1, col_guess1, row_guess2, col_guess2);
+		boolean is_match = board.isMatch(row_guess1, col_guess1, row_guess2, col_guess2);
 		// if match, return turn ++
 		if (is_match) { 
 			System.out.println("Good guess!");
