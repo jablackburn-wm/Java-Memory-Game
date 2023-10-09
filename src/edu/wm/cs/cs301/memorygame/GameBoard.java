@@ -21,6 +21,22 @@ public class GameBoard {
 		board = populateBoard(rows, cols, randomized_chars);
 	}
 
+	public void makeGuess(int row, int col) {
+		
+	}
+
+	public boolean isValidGuess(int row, int col) {
+	
+	}
+
+	public boolean checkisMatch(int row1, int col1, int row2, int col2) {
+	
+	}
+
+	public boolean resetGuess(int row, int col) {
+
+	}	
+
 	public void drawBoard() {
 		//print column list 
 		System.out.print("# | ");
