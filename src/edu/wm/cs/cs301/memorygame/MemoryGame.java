@@ -12,6 +12,7 @@ public class MemoryGame {
 	private String difficulty; // easy, medium, hard
 
 	private GameBoard board;
+	private Scanner stdin = new Scanner(System.in);
 
 	
 	public MemoryGame() {
@@ -20,7 +21,6 @@ public class MemoryGame {
 		System.out.println("-------------------------------------");
 
 		// player name
-		Scanner stdin = new Scanner(System.in);
 		System.out.print("Please register your username: ");
 		player_name = stdin.nextLine().trim();
 		System.out.print("\n");
