@@ -140,7 +140,7 @@ public class MemoryGame {
 			int row_guess1 = getRowGuess();
 			int col_guess1 = getColumnGuess();
 			if (row_guess1 == 0 || col_guess1 == 0) { return 0; }
-			is_valid_guess = board.checkIsValidGuess(row_guess1, col_guess1);
+			is_valid_guess = board.isValidGuess(row_guess1, col_guess1);
 		}
 		board.makeGuess(row_guess1, col_guess1);
 
@@ -153,7 +153,7 @@ public class MemoryGame {
 			int row_guess2 = getRowGuess();
 			int col_guess2 = getColumnGuess();
 			if (row_guess2 == 0 || col_guess2 == 0) { return 0; }
-			is_valid_guess = board.checkIsValidGuess(row_guess2, col_guess2);
+			is_valid_guess = board.isValidGuess(row_guess2, col_guess2);
 		}
 		board.makeGuess(row_guess2, col_guess2);
 
