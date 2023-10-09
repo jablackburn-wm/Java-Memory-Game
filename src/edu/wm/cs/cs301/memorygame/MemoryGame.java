@@ -93,20 +93,18 @@ public class MemoryGame {
 		while (matches < num_matches_to_win) {
 			turn = nextTurn(); // returns 0 for quit, or next turn number 
 
-			//if turn = 0, the quit condition, break out of loop
+			//if turn = 0, the quit condition, quit
 		  if (turn == 0) { 
 				System.out.println("You are a failure!");
 				return;
 			}
 		}
-
-		// check game was not quit
-		if (turn == 0) {
-			
-		}
+		
 		int score = turn--;//decrement turn to get score
 		//updateLeaderboard(player_name, difficulty, score)
 		// print win message
+		System.out.println("Congrats! you beat the memory game in " + score " turns on " + difficulty + " difficulty. \n Thanks for playing! \n");
+		board.drawBoard();
 	}
 
 	private String getLeaderBoard() {
@@ -130,8 +128,39 @@ public class MemoryGame {
 
 	private int nextTurn() {
 		// print turn number 
+		System.out.println("Turn #" + turn);
+		System.out.println("---------------------------");
+		System.out.print("\n");
 		// print board
+		board.drawBoard();
 		// prompt for input, set guess1 - if quit return 0
+		System.out.print("\n");
+		System.out.print("select the row of your first guess (vertical axis): ")'
+		
+		int row_limit = board.getRows();
+		int row = 0;
+		row = stdin.nextLine().trim();
+		while (row < 1 && row > row_limit) {
+			System.out.print("\n");
+			System.out.println("Invalid row number, please select from 1 to " + row_limit);
+			System.out.print("\n");
+			System.out.print("select the row of your first guess (vertical axis): ")'
+			row = stdin.nextLine().trim();
+		}
+
+		System.out.print("\n");
+		System.out.print("select the column of your first guess (horizontal axis): ")'
+
+		int col_limit = board.getColumns();
+		int col = 0;
+		row = stdin.nextLine().trim();
+		while (col < 1 && col > col_limit) {
+			System.out.print("\n");
+			System.out.println("Invalid column number, please select from 1 to " + col_limit);
+			System.out.print("\n");
+			System.out.print("select the column of your first guess (horizontal axis): ")'
+			row = stdin.nextLine().trim();
+		}
 		// mutate board
 		// redraw board
 		// prompt for guess 2 - if quit return 0
