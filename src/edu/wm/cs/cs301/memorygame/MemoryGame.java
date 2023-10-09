@@ -152,7 +152,7 @@ public class MemoryGame {
 
 	private int getRowGuess() {
 		System.out.print("\n");
-		System.out.print("select the row of your first guess (vertical axis): ")'
+		System.out.print("select the row of your first guess (input 'quit' to exit): ")'
 		
 		int row_limit = board.getRows();
 		int row = 0;
@@ -162,7 +162,7 @@ public class MemoryGame {
 			System.out.print("\n");
 			System.out.println("Invalid row number, please select from 1 to " + row_limit);
 			System.out.print("\n");
-			System.out.print("select the row of your first guess (vertical axis): ")'
+			System.out.print("select the row of your first guess (input 'quit' to exit): ")'
 			row = stdin.nextLine().trim();
 			if (row.equals("quit") { return 0 };
 		}
@@ -172,7 +172,7 @@ public class MemoryGame {
 
 	private int getColumnGuess() {
 		System.out.print("\n");
-		System.out.print("select the column of your first guess (horizontal axis): ")'
+		System.out.print("select the column of your first guess (input 'quit' to exit): ")'
 
 		int col_limit = board.getColumns();
 		int col = 0;
@@ -182,7 +182,7 @@ public class MemoryGame {
 			System.out.print("\n");
 			System.out.println("Invalid column number, please select from 1 to " + col_limit);
 			System.out.print("\n");
-			System.out.print("select the column of your first guess (horizontal axis): ")'
+			System.out.print("select the column of your first guess (input 'quit' to exit): ")'
 			col = stdin.nextLine().trim();
 			if (col.equals("quit") { return 0 };
 		}
