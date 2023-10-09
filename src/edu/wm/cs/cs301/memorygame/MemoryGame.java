@@ -91,7 +91,7 @@ public class MemoryGame {
 
 
 		while (matches < num_matches_to_win) {
-			turn = nextTurn(); // returns 0 for quit, or next turn number 
+			turn = nextTurn(turn); // returns 0 for quit, or next turn number 
 
 			//if turn = 0, the quit condition, quit
 		  if (turn == 0) { 
@@ -103,7 +103,7 @@ public class MemoryGame {
 		int score = turn--;//decrement turn to get score
 		//updateLeaderboard(player_name, difficulty, score)
 		// print win message
-		System.out.println("Congrats! you beat the memory game in " + score " turns on " + difficulty + " difficulty. \n Thanks for playing! \n");
+		System.out.println("Congrats! you beat the memory game in " + score + " turns on " + difficulty + " difficulty. \n Thanks for playing! \n");
 		board.drawBoard();
 	}
 
@@ -126,7 +126,7 @@ public class MemoryGame {
 	}
 
 
-	private int nextTurn() {
+	private int nextTurn(int turn) {
 		// print turn number 
 		System.out.println("Turn #" + turn);
 		System.out.println("---------------------------");
