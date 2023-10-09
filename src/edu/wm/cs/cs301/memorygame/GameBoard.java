@@ -35,8 +35,11 @@ public class GameBoard {
 		return true;
 	}
 
-	public boolean checkisMatch(int row1, int col1, int row2, int col2) {
-	
+	public boolean isMatch(int row1, int col1, int row2, int col2) {
+		GamePiece guess1 = board[row1 - 1][col1 - 1];
+		GamePiece guess2 = board[row2 - 1][col2 - 1];
+		if (guess1.getSymbol().equals(guess2.getSymbol())) { return true; }
+		return false;	
 	}
 
 	public boolean resetGuess(int row, int col) {
