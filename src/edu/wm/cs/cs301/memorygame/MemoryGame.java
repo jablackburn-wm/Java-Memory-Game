@@ -136,7 +136,9 @@ public class MemoryGame {
 		// prompt for input, set guess1 - if quit return 0
 		int row_guess = getRowGuess();
 		int col_guess = getColumnGuess();
+		if (row_guess == 0 || col_guess == 0) { return 0; }
 		// mutate board
+		board.makeGuess(row_guess, col_guess);
 		// redraw board
 		// prompt for guess 2 - if quit return 0
 		// mutate board
@@ -155,12 +157,14 @@ public class MemoryGame {
 		int row_limit = board.getRows();
 		int row = 0;
 		row = stdin.nextLine().trim();
+		if (row.equals("quit") { return 0 };
 		while (row < 1 && row > row_limit) {
 			System.out.print("\n");
 			System.out.println("Invalid row number, please select from 1 to " + row_limit);
 			System.out.print("\n");
 			System.out.print("select the row of your first guess (vertical axis): ")'
 			row = stdin.nextLine().trim();
+			if (row.equals("quit") { return 0 };
 		}
 		return row;
 	}
@@ -173,12 +177,14 @@ public class MemoryGame {
 		int col_limit = board.getColumns();
 		int col = 0;
 		col = stdin.nextLine().trim();
+		if (col.equals("quit") { return 0 };
 		while (col < 1 && col > col_limit) {
 			System.out.print("\n");
 			System.out.println("Invalid column number, please select from 1 to " + col_limit);
 			System.out.print("\n");
 			System.out.print("select the column of your first guess (horizontal axis): ")'
 			col = stdin.nextLine().trim();
+			if (col.equals("quit") { return 0 };
 		}
 		return col;
 	}
