@@ -134,6 +134,21 @@ public class MemoryGame {
 		// print board
 		board.drawBoard();
 		// prompt for input, set guess1 - if quit return 0
+		int row_guess = getRowGuess();
+		int col_guess = getColumnGuess();
+		// mutate board
+		// redraw board
+		// prompt for guess 2 - if quit return 0
+		// mutate board
+		// draw board
+		// check match
+		// if match, return turn ++
+		// if not match, mutate board and return turn++
+	}
+
+
+
+	private int getRowGuess() {
 		System.out.print("\n");
 		System.out.print("select the row of your first guess (vertical axis): ")'
 		
@@ -147,27 +162,24 @@ public class MemoryGame {
 			System.out.print("select the row of your first guess (vertical axis): ")'
 			row = stdin.nextLine().trim();
 		}
+		return row;
+	}
 
+
+	private int getColumnGuess() {
 		System.out.print("\n");
 		System.out.print("select the column of your first guess (horizontal axis): ")'
 
 		int col_limit = board.getColumns();
 		int col = 0;
-		row = stdin.nextLine().trim();
+		col = stdin.nextLine().trim();
 		while (col < 1 && col > col_limit) {
 			System.out.print("\n");
 			System.out.println("Invalid column number, please select from 1 to " + col_limit);
 			System.out.print("\n");
 			System.out.print("select the column of your first guess (horizontal axis): ")'
-			row = stdin.nextLine().trim();
+			col = stdin.nextLine().trim();
 		}
-		// mutate board
-		// redraw board
-		// prompt for guess 2 - if quit return 0
-		// mutate board
-		// draw board
-		// check match
-		// if match, return turn ++
-		// if not match, mutate board and return turn++
+		return col;
 	}
 }
