@@ -190,7 +190,7 @@ public class MemoryGame {
 		String row_string = stdin.nextLine().trim();
 		if (row_string.equals("quit")) { return 0; }
 		int row = Integer.parseInt(row_string);
-		while (row < 1 && row > row_limit) {
+		while (row < 1 || row > row_limit) {
 			System.out.print("\n");
 			System.out.println("Invalid row number, please select from 1 to " + row_limit);
 			System.out.print("\n");
@@ -211,7 +211,7 @@ public class MemoryGame {
 		String col_string = stdin.nextLine().trim();
 		if (col_string.equals("quit")) { return 0; }
 		int col = Integer.parseInt(col_string);
-		while (col < 1 && col > col_limit) {
+		while (col < 1 || col > col_limit) {
 			System.out.print("\n");
 			System.out.println("Invalid column number, please select from 1 to " + col_limit);
 			System.out.print("\n");
