@@ -140,8 +140,9 @@ public class MemoryGame {
 		boolean is_valid_guess = false;
 		while (!is_valid_guess) {
 			row_guess1 = getRowGuess();
+			if (row_guess1 == 0) { return 0; }
 			col_guess1 = getColumnGuess();
-			if (row_guess1 == 0 || col_guess1 == 0) { return 0; }
+			if (col_guess1 == 0) { return 0; }
 			is_valid_guess = board.isValidGuess(row_guess1, col_guess1);
 		}
 		board.makeGuess(row_guess1, col_guess1);
@@ -155,8 +156,9 @@ public class MemoryGame {
 		is_valid_guess = false;
 		while (!is_valid_guess) {
 		  row_guess2 = getRowGuess();
+			if (row_guess2 == 0) { return 0; }
 			col_guess2 = getColumnGuess();
-			if (row_guess2 == 0 || col_guess2 == 0) { return 0; }
+			if (col_guess2 == 0) { return 0; }
 			is_valid_guess = board.isValidGuess(row_guess2, col_guess2);
 		}
 		board.makeGuess(row_guess2, col_guess2);
