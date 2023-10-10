@@ -42,7 +42,7 @@ public class GameBoard {
 		return false;	
 	}
 
-	public boolean resetGuess(int row, int col) {
+	public void resetGuess(int row, int col) {
 		GamePiece guess = board[row - 1][col - 1];
 		guess.setVisible(false);
 	}	
