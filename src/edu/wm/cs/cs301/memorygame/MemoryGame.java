@@ -131,19 +131,18 @@ public class MemoryGame {
 		System.out.println("Turn #" + turn);
 		System.out.println("---------------------------");
 		System.out.print("\n");
+
 		// print board
 		board.drawBoard();
 
 		// prompt for input, set guess1 - if quit return 0
-		int row_guess1 = 0;
-		int col_guess1 = 0;
+		int[] guess1 = int[2];
 		boolean is_valid_guess = false;
 		while (!is_valid_guess) {
-			row_guess1 = getRowGuess();
-			if (row_guess1 == 0) { return 0; }
-			col_guess1 = getColumnGuess();
-			if (col_guess1 == 0) { return 0; }
-			is_valid_guess = board.isValidGuess(row_guess1, col_guess1);
+			// get guess array
+			guess1 = getGuess();
+			if (guess[0] == 0) { return 0; }
+			is_valid_guess = board.isValidGuess(guess1[0], guess1[1]);
 		}
 		board.makeGuess(row_guess1, col_guess1);
 
@@ -151,23 +150,20 @@ public class MemoryGame {
 		board.drawBoard();
 
 		// prompt for guess 2 - if quit return 0
-		int row_guess2 = 0;
-		int col_guess2 = 0;
+		int[] guess2 = int[2]
 		is_valid_guess = false;
 		while (!is_valid_guess) {
-		  row_guess2 = getRowGuess();
-			if (row_guess2 == 0) { return 0; }
-			col_guess2 = getColumnGuess();
-			if (col_guess2 == 0) { return 0; }
-			is_valid_guess = board.isValidGuess(row_guess2, col_guess2);
+			guess2 = getGuess
+			if (guess2[0] == 0) { return 0; }
+			is_valid_guess = board.isValidGuess(guess2[0], guess2[1]);
 		}
-		board.makeGuess(row_guess2, col_guess2);
+		board.makeGuess(guess2[0], guess2[1]);
 
 		// draw board
 		board.drawBoard();
 
 		// check match
-		boolean is_match = board.isMatch(row_guess1, col_guess1, row_guess2, col_guess2);
+		boolean is_match = board.isMatch(guess1[0], guess1[1], guess2[0], guess2[1]);
 		// if match, return turn ++
 		if (is_match) { 
 			System.out.println("Good guess!");
@@ -175,8 +171,8 @@ public class MemoryGame {
 		}
 		// if not match, mutate board and return turn++
 		System.out.println("No dice!");
-		board.resetGuess(row_guess1, col_guess1);
-		board.resetGuess(row_guess2, col_guess2);
+		board.resetGuess(guess1[0], guess1[1]);
+		board.resetGuess(guess2[0], guess2[1]);
 		return turn + 1;
 	}
 
