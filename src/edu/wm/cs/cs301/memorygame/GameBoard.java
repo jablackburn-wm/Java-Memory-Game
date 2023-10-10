@@ -27,11 +27,6 @@ public class GameBoard {
 	}
 
 	public boolean isValidGuess(int row, int col) {
-		if (row > rows || col > cols) {
-			System.out.println("Invalid Guess - this guess is out of bounds!");
-			return false;
-		}
-
 		GamePiece guess = board[row - 1][col - 1];
 		if (guess.isVisible()) {
 			System.out.println("Invalid Guess - this character is already visible!");
@@ -122,5 +117,14 @@ public class GameBoard {
 		Collections.shuffle(char_list);
 		char_list.toArray(doubled_chars);
 		return doubled_chars;
+	}
+		
+
+	public int getRows() {
+		return rows;
+	}
+
+	public int getColumns() {
+		return cols;
 	}
 }
