@@ -169,12 +169,13 @@ public class MemoryGame {
 		// if match, return turn ++
 		if (is_match) { 
 			System.out.println("Good guess!");
-			return turn++; }
+			return turn + 1; 
+		}
 		// if not match, mutate board and return turn++
 		System.out.println("No dice!");
 		board.resetGuess(row_guess1, col_guess1);
 		board.resetGuess(row_guess2, col_guess2);
-		return turn++;
+		return turn + 1;
 	}
 
 
