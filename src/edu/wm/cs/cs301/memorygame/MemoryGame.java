@@ -14,6 +14,8 @@ public class MemoryGame {
 	private GameBoard board;
 	private Scanner stdin = new Scanner(System.in);
 
+	private int matches;
+
 	
 	public MemoryGame() {
 		// print welcome message
@@ -40,13 +42,14 @@ public class MemoryGame {
 		String alphabet_selection;
 		System.out.print("choose a symbol set (greek, cyrillic): ");
 		alphabet_selection = stdin.nextLine().trim();
+		System.out.print("\n");
 		while ( !alphabet_selection.equals("greek") && !alphabet_selection.equals("cyrillic") ){
 			System.out.println("!!!invalid symbol set!!! - please enter 'greek', or 'cyrillic' exactly.");
 			System.out.print("\n");
 			System.out.print("choose a symbol set (greek, cyrillic): ");
 			alphabet_selection = stdin.nextLine().trim();
+			System.out.print("\n");
 		}
-		System.out.print("\n");
 		switch (alphabet_selection) {
 			case "greek" -> alphabet = new GreekAlphabet();
 			case "cyrillic" -> alphabet = new CyrillicAlphabet();
@@ -55,6 +58,7 @@ public class MemoryGame {
 		// get difficulty, check that difficulty is valid
 		System.out.print("choose a difficulty level (easy, medium, hard): ");
 		difficulty = stdin.nextLine().trim();
+		System.out.print("\n");
 		while ( !difficulty.equals("easy") && !difficulty.equals("medium") && !difficulty.equals("hard") ) {
 			System.out.println("!!!invalid difficulty!!! - please enter 'easy', 'medium', or 'hard'.");
 			System.out.print("\n");
@@ -87,7 +91,7 @@ public class MemoryGame {
 		board = new GameBoard(rows, columns, alphabet);
 
 		int turn = 1; // turn number 
-		int matches = 0; // number of matches
+		 matches = 0; // number of matches
 
 
 		while (matches < num_matches_to_win) {
@@ -100,10 +104,10 @@ public class MemoryGame {
 			}
 		}
 		
-		int score = turn--;//decrement turn to get score
+		int score = turn - 1;//decrement turn to get score
 		//updateLeaderboard(player_name, difficulty, score)
 		// print win message
-		System.out.println("Congrats " + player_name + "! you beat the memory game in " + score + " turns on " + difficulty + " difficulty. \n Thanks for playing! \n");
+		System.out.println("Congrats " + player_name + "! you beat the memory game in " + score + " turns on " + difficulty + " difficulty. \nThanks for playing! \n");
 		board.drawBoard();
 	}
 
@@ -147,7 +151,6 @@ public class MemoryGame {
 		board.makeGuess(guess1[0], guess1[1]);
 
 		// redraw board
-		System.out.print("\n");
 		board.drawBoard();
 
 		// prompt for guess 2 - if quit return 0
@@ -170,6 +173,7 @@ public class MemoryGame {
 			System.out.print("\n");
 			System.out.println("Good guess!");
 			System.out.print("\n");
+			matches++;
 			return turn + 1; 
 		}
 		// if not match, mutate board and return turn++
@@ -211,6 +215,7 @@ public class MemoryGame {
 			row = Integer.parseInt(split_input[0]);
 			col = Integer.parseInt(split_input[1]);
 		}
+		System.out.print("\n");
 		return new int[]{row, col};
 	}
 }
