@@ -112,7 +112,8 @@ public class MemoryGame {
 		  if (turn == 0) { 
 				System.out.print("\n");
 				System.out.println("You are a failure!");
-				//board.revealAll();
+				System.out.print("\n");
+				board.revealBoard();
 				board.drawBoard();
 				return;
 			}

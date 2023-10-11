@@ -118,6 +118,14 @@ public class GameBoard {
 		char_list.toArray(doubled_chars);
 		return doubled_chars;
 	}
+
+	public void revealBoard() {
+		for (GamePiece[] row : board) {
+			for (GamePiece item : row) {
+				item.setVisible(true);
+			}
+		}
+	}
 		
 
 	public int getRows() {
