@@ -103,7 +103,7 @@ public class MemoryGame {
 		int score = turn--;//decrement turn to get score
 		//updateLeaderboard(player_name, difficulty, score)
 		// print win message
-		System.out.println("Congrats! you beat the memory game in " + score + " turns on " + difficulty + " difficulty. \n Thanks for playing! \n");
+		System.out.println("Congrats " + player_name + "! you beat the memory game in " + score + " turns on " + difficulty + " difficulty. \n Thanks for playing! \n");
 		board.drawBoard();
 	}
 
@@ -128,7 +128,7 @@ public class MemoryGame {
 
 	private int nextTurn(int turn) {
 		// print turn number 
-		System.out.println("Turn #" + turn);
+		System.out.println("Turn # " + turn);
 		System.out.println("---------------------------");
 		System.out.print("\n");
 
@@ -167,10 +167,12 @@ public class MemoryGame {
 		// if match, return turn ++
 		if (is_match) { 
 			System.out.println("Good guess!");
+			System.out.print("\n");
 			return turn + 1; 
 		}
 		// if not match, mutate board and return turn++
 		System.out.println("No dice!");
+		System.out.print("\n");
 		board.resetGuess(guess1[0], guess1[1]);
 		board.resetGuess(guess2[0], guess2[1]);
 		return turn + 1;
@@ -181,6 +183,7 @@ public class MemoryGame {
 	private int[] getGuess() {
 		System.out.print("\n");
 		System.out.print("select your guess [R C] (input 'quit' to exit): ");
+		System.out.print("\n");
 		
 		int row_limit = board.getRows();
 		int col_limit = board.getColumns();
