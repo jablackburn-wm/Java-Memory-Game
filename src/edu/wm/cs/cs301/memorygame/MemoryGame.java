@@ -136,21 +136,21 @@ public class MemoryGame {
 		board.drawBoard();
 
 		// prompt for input, set guess1 - if quit return 0
-		int[] guess1 = int[2];
+		int[] guess1 = new int[2];
 		boolean is_valid_guess = false;
 		while (!is_valid_guess) {
 			// get guess array
 			guess1 = getGuess();
-			if (guess[0] == 0) { return 0; }
+			if (guess1[0] == 0) { return 0; }
 			is_valid_guess = board.isValidGuess(guess1[0], guess1[1]);
 		}
-		board.makeGuess(row_guess1, col_guess1);
+		board.makeGuess(guess1[0], guess1[1]);
 
 		// redraw board
 		board.drawBoard();
 
 		// prompt for guess 2 - if quit return 0
-		int[] guess2 = int[2]
+		int[] guess2 = new int[2];
 		is_valid_guess = false;
 		while (!is_valid_guess) {
 			guess2 = getGuess();
@@ -188,7 +188,7 @@ public class MemoryGame {
 		int row_limit = board.getRows();
 		int col_limit = board.getColumns();
 		String raw_input = stdin.nextLine().trim();
-		if (input.equals("quit")) { return {0, 0}; }
+		if (raw_input.equals("quit")) { return new int[]{0, 0}; }
 
 		
 		String[] split_input = raw_input.split(" ");
@@ -204,11 +204,11 @@ public class MemoryGame {
 			System.out.print("\n");
 			System.out.print("select your guess (input 'quit' to exit): ");
 			raw_input = stdin.nextLine().trim();
-			if (input.equals("quit")) { return {0, 0}; }
-			String[] split_input = raw_input.split(" ");
+			if (raw_input.equals("quit")) { return new int[]{0, 0}; }
+			split_input = raw_input.split(" ");
 			row = Integer.parseInt(split_input[0]);
 			col = Integer.parseInt(split_input[1]);
 		}
-		return {row, col};
+		return new int[]{row, col};
 	}
 }
