@@ -86,7 +86,7 @@ public class MemoryGame {
 		}
 		board = new GameBoard(rows, columns, alphabet);
 
-		int turn = 0; // turn number 
+		int turn = 1; // turn number 
 		int matches = 0; // number of matches
 
 
@@ -147,6 +147,7 @@ public class MemoryGame {
 		board.makeGuess(guess1[0], guess1[1]);
 
 		// redraw board
+		System.out.print("\n");
 		board.drawBoard();
 
 		// prompt for guess 2 - if quit return 0
@@ -166,11 +167,13 @@ public class MemoryGame {
 		boolean is_match = board.isMatch(guess1[0], guess1[1], guess2[0], guess2[1]);
 		// if match, return turn ++
 		if (is_match) { 
+			System.out.print("\n");
 			System.out.println("Good guess!");
 			System.out.print("\n");
 			return turn + 1; 
 		}
 		// if not match, mutate board and return turn++
+		System.out.print("\n");
 		System.out.println("No dice!");
 		System.out.print("\n");
 		board.resetGuess(guess1[0], guess1[1]);
@@ -183,7 +186,6 @@ public class MemoryGame {
 	private int[] getGuess() {
 		System.out.print("\n");
 		System.out.print("select your guess [R C] (input 'quit' to exit): ");
-		System.out.print("\n");
 		
 		int row_limit = board.getRows();
 		int col_limit = board.getColumns();
