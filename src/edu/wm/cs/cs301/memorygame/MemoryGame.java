@@ -94,21 +94,34 @@ public class MemoryGame {
 		 matches = 0; // number of matches
 
 
-		while (matches < num_matches_to_win) {
+		while (true) {
 			turn = nextTurn(turn); // returns 0 for quit, or next turn number 
-
+			
+			if (matches == num_matches_to_win) { 
+				int score = turn - 1;//decrement turn to get score
+				//updateLeaderboard(player_name, difficulty, score)
+				// print win message
+				System.out.println("Congrats " + player_name + "! you beat the memory game in " + score + " turns on " + difficulty + " difficulty. \nThanks for playing! \n");
+				board.drawBoard();
+				System.out.print("\n");
+				return;
+				// System.out.print("play again (yes, no): ");
+				// String play_again = stdin.nextLine().trim();
+			}
 			//if turn = 0, the quit condition, quit
 		  if (turn == 0) { 
+				System.out.print("\n");
 				System.out.println("You are a failure!");
+				//board.revealAll();
+				board.drawBoard();
 				return;
 			}
+			// hit enter to continue
+			System.out.print("hit enter to continue ");
+			String k = stdin.nextLine();
+			System.out.print("\n");
 		}
 		
-		int score = turn - 1;//decrement turn to get score
-		//updateLeaderboard(player_name, difficulty, score)
-		// print win message
-		System.out.println("Congrats " + player_name + "! you beat the memory game in " + score + " turns on " + difficulty + " difficulty. \nThanks for playing! \n");
-		board.drawBoard();
 	}
 
 	private String getLeaderBoard() {
