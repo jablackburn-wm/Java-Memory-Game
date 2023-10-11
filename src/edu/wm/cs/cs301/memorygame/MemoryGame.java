@@ -15,6 +15,7 @@ public class MemoryGame {
 	private Scanner stdin = new Scanner(System.in);
 
 	private int matches;
+	private boolean play_again = true;
 
 	
 	public MemoryGame() {
@@ -27,6 +28,12 @@ public class MemoryGame {
 		player_name = stdin.nextLine().trim();
 		System.out.print("\n");
 
+		while (play_again) { playGame(); }
+		
+	}
+		
+
+	private void playGame() {
 		// leaderboard = getLeaderBoard();
 		leaderboard = "difficulty | player_name | score  \ndifficulty | player_name | score \ndifficulty | player_name | score"; // faux leaderboard
 
@@ -96,17 +103,28 @@ public class MemoryGame {
 
 		while (true) {
 			turn = nextTurn(turn); // returns 0 for quit, or next turn number 
+			String play_again_input = new String();
 			
 			if (matches == num_matches_to_win) { 
 				int score = turn - 1;//decrement turn to get score
 				//updateLeaderboard(player_name, difficulty, score)
-				// print win message
+
 				System.out.println("Congrats " + player_name + "! you beat the memory game in " + score + " turns on " + difficulty + " difficulty. \nThanks for playing! \n");
 				board.drawBoard();
 				System.out.print("\n");
+				System.out.print("hit enter to play again, type 'quit' to exit");
+				play_again_input = stdin.nextLine().trim();
+				if (play_again_input.equals("quit")) { 
+					play_again = false;
+					System.out.print("\n goodbye" + player_name + "!");
+					return;
+				 }
+				
+				System.out.print("\n\n");
+				System.out.println(" ### Restarting Memory Game ### ");
+				System.out.println(" ############################## ");
+				System.out.print("\n\n");
 				return;
-				// System.out.print("play again (yes, no): ");
-				// String play_again = stdin.nextLine().trim();
 			}
 			//if turn = 0, the quit condition, quit
 		  if (turn == 0) { 
@@ -115,6 +133,19 @@ public class MemoryGame {
 				System.out.print("\n");
 				board.revealBoard();
 				board.drawBoard();
+				System.out.print("\n");
+				System.out.print("hit enter to play again, type 'quit' to exit ");
+				play_again_input = stdin.nextLine().trim();
+				if (play_again_input.equals("quit")) { 
+					play_again = false;
+					System.out.print("\n goodbye " + player_name + "!");
+					return;
+				 }
+				
+				System.out.print("\n\n");
+				System.out.println(" ### Restarting Memory Game ### ");
+				System.out.println(" ############################## ");
+				System.out.print("\n\n");
 				return;
 			}
 			// hit enter to continue
