@@ -153,7 +153,7 @@ public class MemoryGame {
 		int[] guess2 = int[2]
 		is_valid_guess = false;
 		while (!is_valid_guess) {
-			guess2 = getGuess
+			guess2 = getGuess();
 			if (guess2[0] == 0) { return 0; }
 			is_valid_guess = board.isValidGuess(guess2[0], guess2[1]);
 		}
@@ -178,44 +178,34 @@ public class MemoryGame {
 
 
 
-	private int getRowGuess() {
+	private int[] getGuess() {
 		System.out.print("\n");
-		System.out.print("select the row of your guess (input 'quit' to exit): ");
+		System.out.print("select your guess [R C] (input 'quit' to exit): ");
 		
 		int row_limit = board.getRows();
-		String row_string = stdin.nextLine().trim();
-		if (row_string.equals("quit")) { return 0; }
-		int row = Integer.parseInt(row_string);
-		while (row < 1 || row > row_limit) {
-			System.out.print("\n");
-			System.out.println("Invalid row number, please select from 1 to " + row_limit);
-			System.out.print("\n");
-			System.out.print("select the row of your guess (input 'quit' to exit): ");
-			row_string = stdin.nextLine().trim();
-			if (row_string.equals("quit")) { return 0; }
-		  row = Integer.parseInt(row_string);
-		}
-		return row;
-	}
-
-
-	private int getColumnGuess() {
-		System.out.print("\n");
-		System.out.print("select the column of your guess (input 'quit' to exit): ");
-
 		int col_limit = board.getColumns();
-		String col_string = stdin.nextLine().trim();
-		if (col_string.equals("quit")) { return 0; }
-		int col = Integer.parseInt(col_string);
-		while (col < 1 || col > col_limit) {
+		String raw_input = stdin.nextLine().trim();
+		if (input.equals("quit")) { return {0, 0}; }
+
+		
+		String[] split_input = raw_input.split(" ");
+		int row = Integer.parseInt(split_input[0]);
+		int col = Integer.parseInt(split_input[1]);
+		
+
+
+
+		while (row < 1 || row > row_limit || col < 1 || col > col_limit) {
 			System.out.print("\n");
-			System.out.println("Invalid column number, please select from 1 to " + col_limit);
+			System.out.println("Invalid guess, please select row from 1 to " + row_limit + "and column from 1 to " + col_limit);
 			System.out.print("\n");
-			System.out.print("select the column of your guess (input 'quit' to exit): ");
-			col_string = stdin.nextLine().trim();
-			if (col_string.equals("quit")) { return 0; }
-			col = Integer.parseInt(col_string);
+			System.out.print("select your guess (input 'quit' to exit): ");
+			raw_input = stdin.nextLine().trim();
+			if (input.equals("quit")) { return {0, 0}; }
+			String[] split_input = raw_input.split(" ");
+			row = Integer.parseInt(split_input[0]);
+			col = Integer.parseInt(split_input[1]);
 		}
-		return col;
+		return {row, col};
 	}
 }
