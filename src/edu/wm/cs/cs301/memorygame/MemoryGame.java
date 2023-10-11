@@ -2,6 +2,13 @@ package edu.wm.cs.cs301.memorygame;
 
 // import file reader/writer and input scanner
 import java.util.Scanner;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.nio.file.Path;
+import java.nio.file.Files;
 
 public class MemoryGame {
 
@@ -26,6 +33,12 @@ public class MemoryGame {
 		// player name
 		System.out.print("Please register your username: ");
 		player_name = stdin.nextLine().trim();
+		while (player_name.equals("-") || player_name.equals("")) {
+			System.out.println("\ndont break my leaderboard\n");
+			System.out.print("Please register your username: ");
+			player_name = stdin.nextLine().trim();
+		}
+
 		System.out.print("\n");
 
 		while (play_again) { playGame(); }
@@ -34,12 +47,12 @@ public class MemoryGame {
 		
 
 	private void playGame() {
-		// leaderboard = getLeaderBoard();
-		leaderboard = "difficulty | player_name | score  \ndifficulty | player_name | score \ndifficulty | player_name | score"; // faux leaderboard
+		leaderboard = getLeaderboard();
+		//leaderboard = "easy,player_name,score\nmedium,player_name,score\nhard,player_name,score"; // faux leaderboard
 
 		// print leaderboard message
 		System.out.println("-------------------------------------");
-		System.out.println("\tCURRENT LEADERBOARD:");
+		System.out.println("\tCURRENT LEADERBOARD (difficulty, user, score):");
 		System.out.println(leaderboard);
 		System.out.println("-------------------------------------");
 		System.out.print("\n");
@@ -107,16 +120,16 @@ public class MemoryGame {
 			
 			if (matches == num_matches_to_win) { 
 				int score = turn - 1;//decrement turn to get score
-				//updateLeaderboard(player_name, difficulty, score)
+				updateLeaderboard(difficulty, score);
 
 				System.out.println("Congrats " + player_name + "! you beat the memory game in " + score + " turns on " + difficulty + " difficulty. \nThanks for playing! \n");
 				board.drawBoard();
 				System.out.print("\n");
-				System.out.print("hit enter to play again, type 'quit' to exit");
+				System.out.print("hit enter to play again, type 'quit' to exit ");
 				play_again_input = stdin.nextLine().trim();
 				if (play_again_input.equals("quit")) { 
 					play_again = false;
-					System.out.print("\n goodbye" + player_name + "!");
+					System.out.print("\n goodbye " + player_name + "!");
 					return;
 				 }
 				
@@ -156,16 +169,130 @@ public class MemoryGame {
 		
 	}
 
-	private String getLeaderBoard() {
+	private String getLeaderboard() {
+		String leaderboard = new String();
 		//check file
-		//if no file, return a response string
-		//if file, load data and return string
+		Path filepath;
+		try { 
+			filepath = Path.of("./src/edu/wm/cs/cs301/memorygame/leaderboard.txt");
+			leaderboard = Files.readString(filepath);
+		} catch (IOException e) { 
+			File file = new File("./src/edu/wm/cs/cs301/memorygame/leaderboard.txt");
+			try {
+				FileWriter fw = new FileWriter(file);
+				fw.write("easy,-,-\nmedium,-,-\nhard,-,-");
+				fw.close();
+				filepath = Path.of("./src/edu/wm/cs/cs301/memorygame/leaderboard.txt");
+				leaderboard = Files.readString(filepath);
+			} catch (IOException e2) {
+				System.out.println("An error occured reading the leaderboard");
+				e2.printStackTrace();
+			}
+		}
+		return leaderboard;
 	}
 
-	private void updateLeaderBoard(String player_name, String difficulty, int score) {
+	private void updateLeaderboard(String difficulty, int score) {
 	
-		//String[] leaderboard_data = leaderboard.split(" | ", 0);
-		
+		leaderboard = getLeaderboard();
+		String[] leaderboard_lines = leaderboard.split("\n", 0);
+		String[] line = new String[3];
+		switch (difficulty) {
+			case "easy" -> {
+				line = leaderboard_lines[0].split(",", 0);
+
+				if (line[1].equals("-")) {
+					line[1] = player_name;
+					line[2] = Integer.toString(score);
+					leaderboard_lines[0] = "easy," + line[1] + "," + line[2];
+					break;
+				}
+
+
+				int prev_score = Integer.parseInt(line[2]);
+				if (score > prev_score) {
+					return;
+				}
+				if (score < prev_score) {
+					line[1] = player_name;
+					line[2] = Integer.toString(score);
+				}
+				if (score == prev_score) {
+					if (player_name.equals(line[1])) {
+						return;
+					}
+					line[1] = line[1] + " & " + player_name;
+				}
+				leaderboard_lines[0] = "easy," + line[1] + "," + line[2];
+			}
+
+			case "medium" -> {
+				line = leaderboard_lines[1].split(",", 0);
+
+				if (line[1].equals("-")) {
+					line[1] = player_name;
+					line[2] = Integer.toString(score);
+					leaderboard_lines[1] = "medium," + line[1] + "," + line[2];
+					break;
+				}
+
+				int prev_score = Integer.parseInt(line[2]);
+				if (score > prev_score) {
+					return;
+				}
+				if (score < prev_score) {
+					line[1] = player_name;
+					line[2] = Integer.toString(score);
+				}
+				if (score == prev_score) {
+					if (player_name.equals(line[1])) {
+						return;
+					}
+					line[1] = line[1] + " & " + player_name;
+				}
+				leaderboard_lines[1] = "medium," + line[1] + "," + line[2];
+			}
+
+			case "hard" -> {
+				line = leaderboard_lines[1].split(",", 0);
+
+				if (line[1].equals("-")) {
+					line[1] = player_name;
+					line[2] = Integer.toString(score);
+					leaderboard_lines[2] = "hard," + line[1] + "," + line[2];
+					break;
+				}
+
+				int prev_score = Integer.parseInt(line[2]);
+				if (score > prev_score) {
+					return;
+				}
+				if (score < prev_score) {
+					line[1] = player_name;
+					line[2] = Integer.toString(score);
+				}
+				if (score == prev_score) {
+					if (player_name.equals(line[1])) {
+						return;
+					}
+					line[1] = line[1] + " & " + player_name;
+				}
+				leaderboard_lines[2] = "hard," + line[1] + "," + line[2];
+			}
+		}
+
+
+		String file_contents = leaderboard_lines[0] + "\n" + leaderboard_lines[1] + "\n" + leaderboard_lines[2];
+		System.out.println("\nupdating leader board. . .   \n");
+		try {
+			File file = new File("./src/edu/wm/cs/cs301/memorygame/leaderboard.txt");
+			FileWriter fw = new FileWriter(file);
+			fw.write(file_contents);
+			fw.close();
+		} catch (IOException e) {
+			System.out.println("An error occured updating the leaderboard");
+			e.printStackTrace();
+		}
 		//check leaderboard data exists, if not create file and add score 
 		//if data exists
 		//check for corresponding difficulty
